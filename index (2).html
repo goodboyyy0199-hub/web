@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>เข้าสู่ระบบ | POBOX PVP</title>
+  <meta name="description" content="POBOX PVP - เซิร์ฟเวอร์ WarZ บน Roblox ล็อกอินด้วย Discord เพื่อเริ่มเล่น">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Noto+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ================= Navbar ================= -->
+  <header class="nav">
+    <a class="logo" href="/">POBOX <span>PVP</span></a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="เปิด/ปิดเมนู">
+    <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+
+    <nav aria-label="เมนูหลัก">
+      <ul class="nav-menu">
+        <li><a href="/" aria-current="page">หน้าแรก</a></li>
+        <li><a href="/shop">ร้านค้า &amp; เรทราคา</a></li>
+        <li><a href="/weapons">คลังอาวุธ</a></li>
+        <li><a href="/leaderboard">อันดับผู้เล่น</a></li>
+        <li><a href="/how-to-play">วิธีเข้าเล่น</a></li>
+      </ul>
+    </nav>
+
+    <!-- ใส่ Discord OAuth2 URL ของคุณที่ href (ปุ่มล็อกอินมุมขวา) -->
+    <a class="btn btn-sm nav-login"
+       href="https://discord.com/oauth2/authorize?client_id=1565002100205948990&response_type=code&redirect_uri=https%3A%2F%2Fpoboxpvp.vercel.app%2Fcallback&scope=identify+email">
+      ล็อกอิน
+    </a>
+  </header>
+
+  <!-- ================= Hero ================= -->
+  <main class="hero">
+    <div class="card">
+      <h1>POBOX PVP <em>WARZ ROBLOX SERVER</em></h1>
+      <p class="muted lead">
+        เซิร์ฟเวอร์ WarZ สายยิงบน Roblox เก็บของ ปล้นสนาม สู้กับผู้เล่นจริง
+        ล็อกอินด้วย Discord เพื่อดูร้านค้า คลังอาวุธ และอันดับของคุณ
+      </p>
+
+      <p id="err" class="error" hidden></p>
+
+      <div class="actions">
+        <!-- ===== วาง Discord OAuth2 URL ของคุณที่ href ด้านล่าง ===== -->
+        <a class="btn btn-lg" href="https://discord.com/oauth2/authorize?client_id=1565002100205948990&response_type=code&redirect_uri=https%3A%2F%2Fpoboxpvp.vercel.app%2Fcallback&scope=identify+email">
+          <svg width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor" aria-hidden="true"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"/></svg>
+          ล็อคอินด้วย Discord
+        </a>
+
+        <!-- ใส่ลิงก์เกมบน Roblox ของคุณที่ href -->
+        <a class="btn btn-lg btn-ghost" href="https://www.roblox.com/games/YOUR_GAME_ID" target="_blank" rel="noopener">
+          เข้าเล่นบน Roblox
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="footer">
+    <span>&copy; 2026 POBOX PVP. สงวนลิขสิทธิ์</span>
+    <!-- ใส่ลิงก์เชิญ Discord คอมมูนิตี้ของคุณที่ href -->
+    <a href="https://discord.gg/YOUR_INVITE" target="_blank" rel="noopener">เข้าร่วม Discord คอมมูนิตี้</a>
+  </footer>
+
+  <script>
+    // ถ้าล็อคอินอยู่แล้ว ข้ามไปหน้า dashboard
+    fetch('/api/me').then((r) => { if (r.ok) location.replace('/dashboard'); }).catch(() => {});
+
+    const e = new URLSearchParams(location.search).get('error');
+    if (e) {
+      const el = document.getElementById('err');
+      el.hidden = false;
+      el.textContent = e === 'denied' ? 'คุณยกเลิกการอนุญาต' : 'ล็อคอินไม่สำเร็จ ลองใหม่อีกครั้ง';
+    }
+  </script>
+</body>
+</html>
