@@ -15,7 +15,6 @@ module.exports = (req, res) => {
   url.searchParams.set('response_type', 'code');
   url.searchParams.set('scope', 'identify');
   url.searchParams.set('state', state);
-  url.searchParams.set('prompt', 'none'); // เคยอนุญาตแล้วไม่ต้องกดซ้ำ
 
   res.setHeader('Set-Cookie', cookie(STATE_COOKIE, state, 600));
   res.setHeader('Cache-Control', 'no-store');
