@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/callback",
+      "has": [{ "type": "query", "key": "error" }],
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    { "source": "/login", "destination": "/api/login" },
+    { "source": "/callback", "destination": "/api/callback" }
+  ]
+}
