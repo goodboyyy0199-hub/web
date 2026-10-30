@@ -1,0 +1,23 @@
+/* ===== shop.css : สไตล์เมนูย่อยหน้า "สินค้า" (หน้าตาเดียวกับเมนูย่อยข่าวสาร) =====
+   แก้สี/ขนาด/ระยะ ที่นี่ได้เลย ไม่กระทบหน้าอื่น */
+#shop-submenu{position:absolute;left:0;right:0;top:clamp(12px,3.2vh,30px);z-index:3;display:flex;justify-content:center;
+  padding:0 12px;pointer-events:none;animation:routeIn .4s ease-out both;}
+#shop-submenu[hidden]{display:none;}
+#shop-submenu .xsm-panel{pointer-events:auto;max-width:100%;display:flex;align-items:center;justify-content:center;
+  gap:clamp(6px,1.2vw,14px);padding:clamp(8px,1.4vw,14px) clamp(10px,2vw,28px);
+  background:rgba(0,0,0,.45);border:1px solid rgba(255,84,76,.85);border-radius:6px;
+  overflow-x:auto;scrollbar-width:none;}
+#shop-submenu .xsm-panel::-webkit-scrollbar{display:none;}
+#shop-submenu .xsm-btn{flex:none;cursor:pointer;background:none;border:0;color:#fff;
+  padding:clamp(7px,1.1vw,11px) clamp(14px,2.2vw,32px);
+  font-family:'Orbitron','Chakra Petch',sans-serif;font-weight:800;letter-spacing:.04em;line-height:1.1;white-space:nowrap;
+  font-size:clamp(13px,1.45vw,19px);text-shadow:0 1px 3px rgba(0,0,0,.95),0 0 2px rgba(0,0,0,.7);
+  -webkit-tap-highlight-color:transparent;user-select:none;touch-action:manipulation;
+  transition:transform .2s ease,color .18s ease,text-shadow .18s ease;}
+#shop-submenu .xsm-btn[aria-pressed="true"]{color:#ff544c;}
+#shop-submenu .xsm-btn:hover,#shop-submenu .xsm-btn:focus-visible{transform:scale(1.07);outline:none;
+  text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 8px rgba(255,255,255,.6),0 0 18px rgba(255,255,255,.3);}
+#shop-submenu .xsm-btn[aria-pressed="true"]:hover{text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 8px rgba(255,84,76,.75),0 0 18px rgba(255,84,76,.4);}
+#shop-submenu .xsm-btn:active{transform:scale(1.03);}
+@media (max-width:639.98px){#shop-submenu .xsm-panel{flex-wrap:wrap;overflow-x:visible;}#shop-submenu .xsm-btn{padding:8px 14px;font-size:14px;}}
+@media (prefers-reduced-motion:reduce){#shop-submenu{animation:none;}#shop-submenu .xsm-btn{transition:none;}}
