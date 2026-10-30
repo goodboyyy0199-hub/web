@@ -1,0 +1,35 @@
+/* ===== props.css : ไฟล์สำหรับแก้ธีม/พร็อบ (ฮาโลวีน ฯลฯ) =====
+   - ไฟล์นี้โหลดหลังสุด จึงทับสไตล์เดิมได้โดยไม่ต้องแก้ index.html
+   - ทุกกฎของธีมขึ้นต้นด้วย html.halloween ... จึงมีผลเฉพาะตอนเปิดธีม
+   - ลบเนื้อหาในไฟล์นี้ทิ้งทั้งหมด เว็บจะกลับเป็นปกติ */
+
+/* ===== พื้นหลังหน้าแรก (Home) เท่านั้น =====
+   - ใช้เฉพาะ main ที่ "ไม่มี" class is-sub  (หน้าอื่น: ข่าวสาร/สกิน/ไอเทม ฯลฯ ใช้ #route-bg เดิม ไม่ถูกแตะ)
+   - ทับ background-image inline เดิมด้วย !important เฉพาะหน้าแรก
+   - รูปอยู่ที่ assets/home-bg-*.webp (3 ขนาด เลือกตามจอ)
+   - ลบบล็อกนี้ทิ้ง = กลับเป็นพื้นหลังเดิม */
+main:not(.is-sub){
+  background-image:url("assets/home-bg-1832.webp") !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  background-position:62% 55% !important;   /* โฟกัสพระอาทิตย์ + เสาไฟจราจร */
+  background-color:#1a0d08;                  /* สีสำรองระหว่างรูปโหลด */
+}
+/* ชั้นเกรเดียนต์ช่วยให้โลโก้/ปุ่มอ่านง่าย (ไม่รับคลิก อยู่ใต้เนื้อหา) */
+main:not(.is-sub)::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 50% 45%,rgba(8,6,6,.55) 0%,rgba(8,6,6,.15) 60%,transparent 100%),
+    linear-gradient(180deg,rgba(8,6,6,.35) 0%,rgba(8,6,6,0) 30%,rgba(8,6,6,.60) 100%);
+}
+/* จอเล็ก/แนวนอน: ใช้ไฟล์เล็กลงให้โหลดเร็ว (จอแนวตั้งใช้ไฟล์ใหญ่ เพราะ cover ขยายตามความสูง) */
+@media (max-width:1000px) and (min-aspect-ratio:16/9){
+  main:not(.is-sub){background-image:url("assets/home-bg-1280.webp") !important;}
+}
+@media (max-width:700px) and (min-aspect-ratio:16/9){
+  main:not(.is-sub){background-image:url("assets/home-bg-900.webp") !important;}
+}
+/* จอแนวตั้ง (มือถือ): เลื่อนจุดโฟกัสให้เห็นพระอาทิตย์/ถนน */
+@media (max-aspect-ratio:1/1){
+  main:not(.is-sub){background-position:74% 50% !important;}
+}
