@@ -1,9 +1,0 @@
-/* ===== props.css : ไฟล์สำหรับแก้ธีม/พร็อบ (ฮาโลวีน ฯลฯ) =====
-   - ไฟล์นี้โหลดหลังสุด จึงทับสไตล์เดิมได้โดยไม่ต้องแก้ index.html
-   - ทุกกฎของธีมขึ้นต้นด้วย html.halloween ... จึงมีผลเฉพาะตอนเปิดธีม
-   - ลบเนื้อหาในไฟล์นี้ทิ้งทั้งหมด เว็บจะกลับเป็นปกติ */
-
-/* ตัวอย่าง (เอา comment ออกเพื่อทดลอง)
-html.halloween body{ filter:hue-rotate(-20deg) saturate(1.2); }
-html.halloween .prop-bat{ position:fixed; pointer-events:none; z-index:9999; }
-*/
